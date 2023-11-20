@@ -1,32 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import InputItem from './InputItem';
 
-const TodoList = () => {
-  const [newTodo, setNewTodo] = useState('');
-  const [todos, setTodos] = useState([]);
-
-  const handleInputChange = (event) => {
-    setNewTodo(event.target.value);
-  };
-
-  const handleSaveTodo = () => {
-    if (newTodo.trim() !== '') {
-      setTodos([...todos, newTodo]);
-      setNewTodo('');
-    }
-  };
-
+const ToDoList = ({ todos, newTodo, handleInputChange, handleOnEnter, handleSaveTodo }) => {
   return (
     <div>
       <h2>Todo List</h2>
-      <div>
-        <input
-          type="text"
-          value={newTodo}
-          onChange={handleInputChange}
-          placeholder="Enter a new Todo"
-        />
-        <button onClick={handleSaveTodo}>Save</button>
-      </div>
+      <InputItem
+        value={newTodo}
+        onChange={handleInputChange}
+        onKeyDown={handleOnEnter}
+        onClick={handleSaveTodo}
+      />
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>{todo}</li>
@@ -36,4 +20,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default ToDoList;
