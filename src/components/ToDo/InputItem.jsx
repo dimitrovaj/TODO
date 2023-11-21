@@ -1,4 +1,3 @@
-import React from 'react';
 
 const InputItem = ({ value, onChange, onKeyDown, onClick }) => {
   return (

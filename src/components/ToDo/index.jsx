@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ToDoList from './ToDoList';
 import { v4 as uuidv4 } from 'uuid';
+import InputItem from './InputItem';
+
 
 const ToDo = () => {
+
   const [newTodo, setNewTodo] = useState('');
   const [todos, setTodos] = useState([]);
   const [selectedItemsArray, setSelectedItemsArray] = useState([]);
@@ -41,18 +44,23 @@ const ToDo = () => {
   };
 
   return (
-    <ToDoList
-      todos={todos}
-      newTodo={newTodo}
-      handleInputChange={handleInputChange}
-      handleOnEnter={handleOnEnter}
-      handleSaveTodo={handleSaveTodo}
-      handleDeleteAll={handleDeleteAll}
-      handleDeleteTodo={handleDeleteTodo}
-      selectedItemsArray={selectedItemsArray}
-      setSelectedItemsArray={setSelectedItemsArray}
-      handleDeleteSelectedTodos={handleDeleteSelectedTodos}
-    />
+    <>
+      <h1>Todo List</h1>
+      <InputItem value={newTodo}
+        onChange={handleInputChange}
+        onKeyDown={handleOnEnter}
+        onClick={handleSaveTodo} />
+
+      <button onClick={handleDeleteAll}>Delete All</button>
+      <button onClick={handleDeleteSelectedTodos}>Delete Selected</button>
+
+      <ToDoList
+        todos={todos}
+        handleDeleteTodo={handleDeleteTodo}
+        selectedItemsArray={selectedItemsArray}
+        setSelectedItemsArray={setSelectedItemsArray}
+      />
+    </>
   );
 };
 
