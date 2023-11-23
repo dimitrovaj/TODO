@@ -8,7 +8,7 @@ import InputTitle from './InputTitle';
 
 
 const ToDo = () => {
-  const {lists, addToList} = useContext(ToDoContext);
+  const {addToList} = useContext(ToDoContext);
 
   const [newTitle, setNewTitle] = useState('');
   const [titles, setTitles] = useState([]);
@@ -16,7 +16,14 @@ const ToDo = () => {
   const [todos, setTodos] = useState([]);
   const [selectedItemsArray, setSelectedItemsArray] = useState([]);
 
-  console.log('context lists:', lists )
+  //console.log('context lists:', lists )
+
+  // useEffect(() => {
+  //   const savedTodos = JSON.parse(localStorage.getItem("todos"));
+  //   if (savedTodos) {
+  //     setTodos(savedTodos);
+  //   }
+  // }, []);
 
   const handleSaveList = () => {
     if (newTitle.trim() !== '') {
